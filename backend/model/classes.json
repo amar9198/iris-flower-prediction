@@ -1,0 +1,13 @@
+{
+  "classes": [
+    "setosa",
+    "versicolor",
+    "virginica"
+  ],
+  "feature_order": [
+    "SepalLengthCm",
+    "SepalWidthCm",
+    "PetalLengthCm",
+    "PetalWidthCm"
+  ]
+}
