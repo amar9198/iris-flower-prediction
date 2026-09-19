@@ -1,8 +1,35 @@
 # Iris Flower Predictor
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Open%20App-2ea44f)](https://iris-flower-prediction-1-dueu.onrender.com)
+[![Backend API](https://img.shields.io/badge/API-Health%20Check-0d6efd)](https://iris-flower-prediction-53bw.onrender.com/health)
+
+A deployed machine-learning web application that predicts the species of an
+Iris flower from four measurements. Enter the sepal and petal dimensions to
+receive a predicted species and confidence probabilities.
+
 A full-stack app for your Iris classifier: a FastAPI backend serving the
 Keras neural network from your Kaggle notebook, and a React + Tailwind
 frontend for entering measurements and viewing predictions.
+
+## Live application
+
+- **Frontend:** https://iris-flower-prediction-1-dueu.onrender.com
+- **Backend health check:** https://iris-flower-prediction-53bw.onrender.com/health
+
+## Features
+
+- Predicts `setosa`, `versicolor`, or `virginica`
+- Validates measurements in the frontend and backend
+- Displays per-species confidence probabilities
+- Uses the same scaler and feature order as model training
+- Responsive React and Tailwind user interface
+
+## Technology stack
+
+- **Frontend:** React, Vite, Tailwind CSS, Axios
+- **Backend:** Python, FastAPI, Uvicorn, Pydantic
+- **Machine learning:** TensorFlow/Keras, scikit-learn StandardScaler
+- **Deployment:** Render Static Site and Web Service
 
 ## Project structure
 
@@ -103,6 +130,47 @@ npm run dev
 ```
 
 Open the URL Vite prints (typically `http://localhost:5173`).
+
+### Environment variables
+
+For local frontend development, create `frontend/.env.local`:
+
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+For a deployed backend, set `VITE_API_URL` to the public backend URL. The
+backend supports these variables:
+
+| Variable | Required | Purpose |
+|---|---|---|
+| `PORT` | No | Port supplied by the hosting platform; defaults to `5000` locally. |
+| `FRONTEND_URL` | Production | Public frontend URL used for CORS. |
+
+## Deployment
+
+The project is deployed on Render as two services.
+
+### Backend web service
+
+```text
+Root directory: backend
+Build command: pip install -r requirements.txt
+Start command: python app.py
+Python version: 3.10.13
+```
+
+Set `FRONTEND_URL` to the deployed static-site URL.
+
+### Frontend static site
+
+```text
+Root directory: frontend
+Build command: npm ci && npm run build
+Publish directory: dist
+```
+
+Set `VITE_API_URL` to the deployed backend URL.
 
 ## Testing with sample values
 
